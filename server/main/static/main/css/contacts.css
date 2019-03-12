@@ -1,0 +1,26 @@
+.contact_form textarea {
+    width: 800px;
+    height: 100px;
+}
+
+.contact_form label {
+    display: inline-block;
+    line-height: 45px;
+    width: 220px;
+}
+
+.contact_form input[type="text"],
+.contact_form input[type="email"] {
+    width: 400px;
+    height: 35px;
+
+    font-size: 20px;
+    color: rgb(0, 76, 95);
+    font-variant: small-caps;
+    text-transform: capitalize;
+}
+
+.contact_form input[type="email"]:focus {
+    background: rgb(0, 76, 95);
+    color: white;
+}
