@@ -1,0 +1,182 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Сундук с сокровищами
+{% endblock %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Наши новинки
+    </div>
+    <div class="content_right_product">
+        <a href="{% url 'karkasson' %}" class="product_unit product_unit_new">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'karkasson' %}" class="product_unit product_unit_hot">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+                <div class="product_unit_price_old">1 500 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'karkasson' %}" class="product_unit">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'karkasson' %}" class="product_unit">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'karkasson' %}" class="product_unit">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'karkasson' %}" class="product_unit">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+    </div>
+    <div class="content_right_header">
+        Хит продаж
+    </div>
+    <div class="content_right_product">
+        <a href="{% url 'machi_koro' %}" class="product_unit">
+            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <div class="product_unit_name">
+                Мачи-Коро
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">900 ₽</div>
+                <div class="product_unit_price_old">1 000 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'machi_koro' %}" class="product_unit">
+            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <div class="product_unit_name">
+                Мачи-Коро
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">900 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'machi_koro' %}" class="product_unit">
+            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <div class="product_unit_name">
+                Мачи-Коро
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">900 ₽</div>
+            </div>
+        </a>
+    </div>
+    <div class="content_right_header">
+        Скидки!
+    </div>
+    <div class="content_right_product">
+        <a href="{% url 'manchkin' %}" class="product_unit">
+            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <div class="product_unit_name">
+                Манчкин
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">900 ₽</div>
+                <div class="product_unit_price_old">1 000 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'manchkin' %}" class="product_unit">
+            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <div class="product_unit_name">
+                Манчкин
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">900 ₽</div>
+                <div class="product_unit_price_old">1 000 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'manchkin' %}" class="product_unit">
+            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <div class="product_unit_name">
+                Манчкин
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">900 ₽</div>
+                <div class="product_unit_price_old">1 000 ₽</div>
+            </div>
+        </a>
+    </div>
+{% endblock %}
+
+{% block brends_main %}
+    <div class="brends_main">
+        <img src="{% static 'main/img/brands/castorland.png' %}" alt="">
+        <img src="{% static 'main/img/brands/crowd_games.jpg' %}" alt="">
+        <img src="{% static 'main/img/brands/bondibon.png' %}" alt="">
+        <img src="{% static 'main/img/brands/gaga2.png' %}" alt="">
+        <img src="{% static 'main/img/brands/hobby_world.png' %}" alt="">
+        <img src="{% static 'main/img/brands/ni.png' %}" alt="">
+        <img src="{% static 'main/img/brands/umbum.png' %}" alt="">
+        <img src="{% static 'main/img/brands/zvezda.gif' %}" alt="">
+    </div>
+{% endblock %}
+
+{% block instagram %}
+    <div class="instagram_feed_wrap">
+        <div class="instagram_feed_header">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram feed:</span>
+            #сундукссокровищами
+        </div>
+        <div class="instagram_feed_images">
+            <img src="{% static 'main/img/instagram/1.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/2.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/3.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/4.jpeg' %}" alt="">
+            <img src="{% static 'main/img/instagram/5.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/6.jpg' %}" alt="">
+        </div>
+    </div>
+{% endblock %}
+
+{% block social_buttons %}
+    <div class="social_buttons_wrap">
+        <a href="#">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-pinterest-p"></i>
+        </a>
+    </div>
+{% endblock %}
