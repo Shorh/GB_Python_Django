@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Каталог
+{%  endblock %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Каталог
+    </div>
+    <div class="content_right_product">
+        <a href="{% url 'karkasson' %}" class="product_unit product_unit_new">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'karkasson' %}" class="product_unit product_unit_hot">
+            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+                <div class="product_unit_price_old">1 500 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'machi_koro' %}" class="product_unit">
+            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'machi_koro' %}" class="product_unit">
+            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'manchkin' %}" class="product_unit">
+            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+        <a href="{% url 'manchkin' %}" class="product_unit">
+            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <div class="product_unit_name">
+                Каркассон
+            </div>
+            <div class="product_unit_price_wrap">
+                <div class="product_unit_price_actual">1 300 ₽</div>
+            </div>
+        </a>
+    </div>
+{% endblock %}
