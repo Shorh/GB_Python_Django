@@ -5,5 +5,5 @@ def start(request):
     return render(request, 'info/index.html')
 
 
-def contact(request):
+def contacts(request):
     return render(request, 'info/contacts.html')
