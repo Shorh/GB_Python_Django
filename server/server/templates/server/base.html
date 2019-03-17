@@ -17,6 +17,12 @@
                   integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
                   crossorigin="anonymous">
                 <link rel="stylesheet" href="{% static 'server/css/base.css' %}">
+
+                {% for link in link_list %}
+                    {% if link != '' %}
+                        <link rel="stylesheet" href="{% static link %}">
+                    {% endif %}
+                {% endfor %}
             {% endblock %}
 
             {% block js %}
