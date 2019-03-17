@@ -1,10 +1,12 @@
 from django.urls import path
 from main.views import (
-    start, contacts
+    main, contacts
 )
 
 
+app_name = 'main'
+
 urlpatterns = [
-    path('', start, name='start'),
+    path('', main, name='main'),
     path('contacts/', contacts, name='contacts'),
 ]

@@ -36,7 +36,7 @@
             {% block header_main %}
                 <div class="header_main">
                     <div class="main_wrap">
-                        <a href="{% url 'start' %}" class="logo"></a>
+                        <a href="{% url 'main:main' %}" class="logo"></a>
                         <div class="shop_name_wrap">
                             <div class="shop_name_main">
                                 Сундук с сокровищами
@@ -101,9 +101,9 @@
                                     Меню
                                 </div>
                                 <div class="column_link">
-                                    <a href="{% url 'start' %}">Главная</a>
-                                    <a href="{% url 'catalog' %}">Каталог</a>
-                                    <a href="{% url 'contacts' %}">Контакты</a>
+                                    <a href="{% url 'main:main' %}">Главная</a>
+                                    <a href="{% url 'products:main' %}">Каталог</a>
+                                    <a href="{% url 'main:contacts' %}">Контакты</a>
                                 </div>
                             </div>
                             <div>
