@@ -1,8 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 {% load staticfiles %}
 
 {% block title %}
     Сундук с сокровищами
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'info/css/index.css' %}">
 {% endblock %}
 
 {% block content_right %}
@@ -11,7 +16,7 @@
     </div>
     <div class="content_right_product">
         <a href="{% url 'karkasson' %}" class="product_unit product_unit_new">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <img src="{% static 'products/img/karkasson.jpg' %}" alt="Каркассон">
             <div class="product_unit_name">
                 Каркассон
             </div>
@@ -20,7 +25,7 @@
             </div>
         </a>
         <a href="{% url 'karkasson' %}" class="product_unit product_unit_hot">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <img src="{% static 'products/img/karkasson.jpg' %}" alt="Каркассон">
             <div class="product_unit_name">
                 Каркассон
             </div>
@@ -30,7 +35,7 @@
             </div>
         </a>
         <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <img src="{% static 'products/img/karkasson.jpg' %}" alt="Каркассон">
             <div class="product_unit_name">
                 Каркассон
             </div>
@@ -39,7 +44,7 @@
             </div>
         </a>
         <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <img src="{% static 'products/img/karkasson.jpg' %}" alt="Каркассон">
             <div class="product_unit_name">
                 Каркассон
             </div>
@@ -48,7 +53,7 @@
             </div>
         </a>
         <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <img src="{% static 'products/img/karkasson.jpg' %}" alt="Каркассон">
             <div class="product_unit_name">
                 Каркассон
             </div>
@@ -57,7 +62,7 @@
             </div>
         </a>
         <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
+            <img src="{% static 'products/img/karkasson.jpg' %}" alt="Каркассон">
             <div class="product_unit_name">
                 Каркассон
             </div>
@@ -71,7 +76,7 @@
     </div>
     <div class="content_right_product">
         <a href="{% url 'machi_koro' %}" class="product_unit">
-            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <img src="{% static 'products/img/machi-koro.jpg' %}" alt="Мачи-Коро">
             <div class="product_unit_name">
                 Мачи-Коро
             </div>
@@ -81,7 +86,7 @@
             </div>
         </a>
         <a href="{% url 'machi_koro' %}" class="product_unit">
-            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <img src="{% static 'products/img/machi-koro.jpg' %}" alt="Мачи-Коро">
             <div class="product_unit_name">
                 Мачи-Коро
             </div>
@@ -90,7 +95,7 @@
             </div>
         </a>
         <a href="{% url 'machi_koro' %}" class="product_unit">
-            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
+            <img src="{% static 'products/img/machi-koro.jpg' %}" alt="Мачи-Коро">
             <div class="product_unit_name">
                 Мачи-Коро
             </div>
@@ -104,7 +109,7 @@
     </div>
     <div class="content_right_product">
         <a href="{% url 'manchkin' %}" class="product_unit">
-            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <img src="{% static 'products/img/manchkin.jpg' %}" alt="Манчкин">
             <div class="product_unit_name">
                 Манчкин
             </div>
@@ -114,7 +119,7 @@
             </div>
         </a>
         <a href="{% url 'manchkin' %}" class="product_unit">
-            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <img src="{% static 'products/img/manchkin.jpg' %}" alt="Манчкин">
             <div class="product_unit_name">
                 Манчкин
             </div>
@@ -124,7 +129,7 @@
             </div>
         </a>
         <a href="{% url 'manchkin' %}" class="product_unit">
-            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
+            <img src="{% static 'products/img/manchkin.jpg' %}" alt="Манчкин">
             <div class="product_unit_name">
                 Манчкин
             </div>
@@ -138,14 +143,14 @@
 
 {% block brends_main %}
     <div class="brends_main">
-        <img src="{% static 'main/img/brands/castorland.png' %}" alt="">
-        <img src="{% static 'main/img/brands/crowd_games.jpg' %}" alt="">
-        <img src="{% static 'main/img/brands/bondibon.png' %}" alt="">
-        <img src="{% static 'main/img/brands/gaga2.png' %}" alt="">
-        <img src="{% static 'main/img/brands/hobby_world.png' %}" alt="">
-        <img src="{% static 'main/img/brands/ni.png' %}" alt="">
-        <img src="{% static 'main/img/brands/umbum.png' %}" alt="">
-        <img src="{% static 'main/img/brands/zvezda.gif' %}" alt="">
+        <img src="{% static 'info/img/brands/castorland.png' %}" alt="">
+        <img src="{% static 'info/img/brands/crowd_games.jpg' %}" alt="">
+        <img src="{% static 'info/img/brands/bondibon.png' %}" alt="">
+        <img src="{% static 'info/img/brands/gaga2.png' %}" alt="">
+        <img src="{% static 'info/img/brands/hobby_world.png' %}" alt="">
+        <img src="{% static 'info/img/brands/ni.png' %}" alt="">
+        <img src="{% static 'info/img/brands/umbum.png' %}" alt="">
+        <img src="{% static 'info/img/brands/zvezda.gif' %}" alt="">
     </div>
 {% endblock %}
 
@@ -157,12 +162,12 @@
             #сундукссокровищами
         </div>
         <div class="instagram_feed_images">
-            <img src="{% static 'main/img/instagram/1.jpg' %}" alt="">
-            <img src="{% static 'main/img/instagram/2.jpg' %}" alt="">
-            <img src="{% static 'main/img/instagram/3.jpg' %}" alt="">
-            <img src="{% static 'main/img/instagram/4.jpeg' %}" alt="">
-            <img src="{% static 'main/img/instagram/5.jpg' %}" alt="">
-            <img src="{% static 'main/img/instagram/6.jpg' %}" alt="">
+            <img src="{% static 'info/img/instagram/1.jpg' %}" alt="">
+            <img src="{% static 'info/img/instagram/2.jpg' %}" alt="">
+            <img src="{% static 'info/img/instagram/3.jpg' %}" alt="">
+            <img src="{% static 'info/img/instagram/4.jpeg' %}" alt="">
+            <img src="{% static 'info/img/instagram/5.jpg' %}" alt="">
+            <img src="{% static 'info/img/instagram/6.jpg' %}" alt="">
         </div>
     </div>
 {% endblock %}

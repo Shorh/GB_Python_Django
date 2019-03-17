@@ -1,0 +1,77 @@
+.brends_main {
+    height: 160px;
+    background-color: #f8f8f8;
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.instagram_feed_wrap {
+    height: 350px;
+    background-color: #eaeaea;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.instagram_feed_header {
+    color: #333333;
+    font-family: "Roboto Black Italic", sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+.instagram_feed_header i {
+    font-size: 32px;
+    font-weight: bold;
+    position: relative;
+    top: 5px;
+}
+
+.instagram_feed_header span {
+    font-size: 22px;
+}
+
+.instagram_feed_images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 29px;
+    height: 185px;
+}
+
+.instagram_feed_images img {
+    border: 8px solid white;
+    box-sizing: border-box;
+    width: 185px;
+    height: auto;
+}
+
+.social_buttons_wrap {
+    height: 150px;
+    display: flex;
+}
+
+.social_buttons_wrap a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/3);
+    height: inherit;
+    text-decoration: none;
+    color: #fff;
+    font-size: 4rem;
+}
+
+.social_buttons_wrap a:nth-child(1) {
+    background-color: #3b5997;
+}
+
+.social_buttons_wrap a:nth-child(2) {
+    background-color: #3fccfd;
+}
+
+.social_buttons_wrap a:nth-child(3) {
+    background-color: #cb2027;
+}
