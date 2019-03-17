@@ -1,0 +1,122 @@
+.product_img_and_short_descroption::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.product_short_description_wrap {
+    float: right;
+    width: 77%;
+}
+
+.game_image {
+    width: 20%;
+    border: rgb(1, 86, 107) solid 4px;
+    float: left;
+    margin-right: 15px;
+}
+
+.game_image:hover {
+    border-color: transparent;
+}
+
+.buy {
+    float: right;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: rgb(1, 86, 107);
+    font-size: 24px;
+    font-weight: bold;
+    font-variant: small-caps;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1fcff+0,35bfbf+100 */
+    background: #f1fcff;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f1fcff 0%, #35bfbf 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #f1fcff 0%, #35bfbf 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #f1fcff 0%, #35bfbf 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f1fcff', endColorstr='#35bfbf', GradientType=0);
+    /* IE6-9 */
+}
+
+.buy:hover {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1fcff+0,91bcbc+100 */
+    background: #f1fcff;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f1fcff 0%, #91bcbc 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #f1fcff 0%, #91bcbc 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #f1fcff 0%, #91bcbc 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f1fcff', endColorstr='#91bcbc', GradientType=0);
+    /* IE6-9 */
+}
+
+.buy:active {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1fcff+0,26ad59+100 */
+    background: #f1fcff;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f1fcff 0%, #26ad59 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #f1fcff 0%, #26ad59 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #f1fcff 0%, #26ad59 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f1fcff', endColorstr='#26ad59', GradientType=0);
+    /* IE6-9 */
+}
+
+.product_header {
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    background: #eaeaea;
+}
+
+.product_short_description {
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+
+.product_full_description {
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.product_short_description::first-letter, .product_full_description::first-letter, .product_additional_description::first-letter {
+    font-size: 20px;
+    color: #5a0a0a;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.product_features {
+    color: rgb(1, 86, 107);
+    font-size: 18px;
+}
+
+.product_features li {
+    list-style: none;
+    background: url(../img/list.png) no-repeat left center;
+    background-size: 2%;
+    padding-left: 35px;
+}
+
+table.product_features {
+    border-collapse: collapse
+}
+
+table.product_features td, table.product_features th {
+    border: 1px solid #484343;
+}
+
+table.product_features td:nth-child(2) {
+    text-align: center;
+}
