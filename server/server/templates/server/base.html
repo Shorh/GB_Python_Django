@@ -16,7 +16,7 @@
                   href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
                   integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
                   crossorigin="anonymous">
-                <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+                <link rel="stylesheet" href="{% static 'server/css/base.css' %}">
             {% endblock %}
 
             {% block js %}
@@ -64,7 +64,7 @@
                 <div class="main_wrap">
                     {% block content_left %}
                         <div class="content_left">
-                            {% include 'main/includes/inc_main_menu.html' %}
+                            {% include 'server/includes/inc_main_menu.html' %}
                             <div class="now_is_open">
                                 <span>Now <br> is <br> open!</span>
                             </div>
@@ -139,12 +139,12 @@
                                     <input type="text" placeholder="Insert e-mail">
                                     <button>SUBMIT</button>
                                     <div class="cards_wrap">
-                                        <img src=" {% static 'main/img/payment_methods/american-express.jpg' %}" alt="">
-                                        <img src=" {% static 'main/img/payment_methods/master-card.jpg' %}" alt="">
-                                        <img src=" {% static 'main/img/payment_methods/maestro.jpg' %}" alt="">
-                                        <img src=" {% static 'main/img/payment_methods/paypal.jpg' %}" alt="">
-                                        <img src=" {% static 'main/img/payment_methods/discover.jpg' %}" alt="">
-                                        <img src=" {% static 'main/img/payment_methods/visa.jpg' %}" alt="">
+                                        <img src=" {% static 'server/img/payment_methods/american-express.jpg' %}" alt="">
+                                        <img src=" {% static 'server/img/payment_methods/master-card.jpg' %}" alt="">
+                                        <img src=" {% static 'server/img/payment_methods/maestro.jpg' %}" alt="">
+                                        <img src=" {% static 'server/img/payment_methods/paypal.jpg' %}" alt="">
+                                        <img src=" {% static 'server/img/payment_methods/discover.jpg' %}" alt="">
+                                        <img src=" {% static 'server/img/payment_methods/visa.jpg' %}" alt="">
                                     </div>
                                 </div>
                             </div>

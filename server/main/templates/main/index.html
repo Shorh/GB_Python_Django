@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'server/base.html' %}
 {% load staticfiles %}
 
 {% block title %}
@@ -7,7 +7,7 @@
 
 {% block css %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'info/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
 {% endblock %}
 
 {% block content_right %}
@@ -143,14 +143,14 @@
 
 {% block brends_main %}
     <div class="brends_main">
-        <img src="{% static 'info/img/brands/castorland.png' %}" alt="">
-        <img src="{% static 'info/img/brands/crowd_games.jpg' %}" alt="">
-        <img src="{% static 'info/img/brands/bondibon.png' %}" alt="">
-        <img src="{% static 'info/img/brands/gaga2.png' %}" alt="">
-        <img src="{% static 'info/img/brands/hobby_world.png' %}" alt="">
-        <img src="{% static 'info/img/brands/ni.png' %}" alt="">
-        <img src="{% static 'info/img/brands/umbum.png' %}" alt="">
-        <img src="{% static 'info/img/brands/zvezda.gif' %}" alt="">
+        <img src="{% static 'main/img/brands/castorland.png' %}" alt="">
+        <img src="{% static 'main/img/brands/crowd_games.jpg' %}" alt="">
+        <img src="{% static 'main/img/brands/bondibon.png' %}" alt="">
+        <img src="{% static 'main/img/brands/gaga2.png' %}" alt="">
+        <img src="{% static 'main/img/brands/hobby_world.png' %}" alt="">
+        <img src="{% static 'main/img/brands/ni.png' %}" alt="">
+        <img src="{% static 'main/img/brands/umbum.png' %}" alt="">
+        <img src="{% static 'main/img/brands/zvezda.gif' %}" alt="">
     </div>
 {% endblock %}
 
@@ -162,12 +162,12 @@
             #сундукссокровищами
         </div>
         <div class="instagram_feed_images">
-            <img src="{% static 'info/img/instagram/1.jpg' %}" alt="">
-            <img src="{% static 'info/img/instagram/2.jpg' %}" alt="">
-            <img src="{% static 'info/img/instagram/3.jpg' %}" alt="">
-            <img src="{% static 'info/img/instagram/4.jpeg' %}" alt="">
-            <img src="{% static 'info/img/instagram/5.jpg' %}" alt="">
-            <img src="{% static 'info/img/instagram/6.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/1.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/2.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/3.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/4.jpeg' %}" alt="">
+            <img src="{% static 'main/img/instagram/5.jpg' %}" alt="">
+            <img src="{% static 'main/img/instagram/6.jpg' %}" alt="">
         </div>
     </div>
 {% endblock %}

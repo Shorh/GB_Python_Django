@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'server/base.html' %}
 {% load staticfiles %}
 
 {% block title %}
@@ -7,7 +7,7 @@
 
 {% block css %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'info/css/contacts.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/contacts.css' %}">
 {% endblock %}
 
 
