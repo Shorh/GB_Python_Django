@@ -10,7 +10,7 @@
             {% for product in new %}
                 <a href="{% url product.url %}"
                    class="product_unit product_unit_new">
-                    <img src="{{ product.image_url }}" alt={{ product.name }}>
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
                     <div class="product_unit_name">
                         {{ product.name }}
                     </div>
@@ -31,7 +31,7 @@
             {% for product in hot %}
                 <a href="{% url product.url %}"
                    class="product_unit product_unit_hot">
-                    <img src="{{ product.image_url }}" alt={{ product.name }}>
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
                     <div class="product_unit_name">
                         {{ product.name }}
                     </div>
@@ -53,7 +53,7 @@
             {% for product in sale %}
                 <a href="{% url product.url %}"
                    class="product_unit">
-                    <img src="{{ product.image_url }}" alt={{ product.name }}>
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
                     <div class="product_unit_name">
                         {{ product.name }}
                     </div>
