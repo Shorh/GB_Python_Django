@@ -1,0 +1,17 @@
+<div class="menu_wrap">
+    <div class="menu_wrap_text">Меню</div>
+    <div class="root_main">
+        <a href="{% url 'main:main' %}">Главная</a>
+    </div>
+    <div class="root_main">
+        <a href="{% url 'products:main' %}">Каталог</a>
+        <div class="dropdown_main">
+            <a href="{% url 'products:karkasson' %}">Каркассон</a>
+            <a href="{% url 'products:machi_koro' %}">Мачи-Коро</a>
+            <a href="{% url 'products:manchkin' %}">Манчкин</a>
+        </div>
+    </div>
+    <div class="root_main">
+        <a href="{% url 'main:contacts' %}">Контакты</a>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Каталог
+    </div>
+    <div class="content_right_product">
+        {% for product in products %}
+            {% for _ in ''|rjust:2 %}
+                <a href="{% url product.url %}" class="product_unit">
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
+                    <div class="product_unit_name">
+                        {{ product.name }}
+                    </div>
+                    <div class="product_unit_price_wrap">
+                        <div class="product_unit_price_actual"> {{ product.price }} ₽</div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

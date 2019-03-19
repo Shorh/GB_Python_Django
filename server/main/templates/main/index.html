@@ -1,138 +1,70 @@
-{% extends 'main/base.html' %}
+{% extends 'server/base.html' %}
 {% load staticfiles %}
-
-{% block title %}
-    Сундук с сокровищами
-{% endblock %}
 
 {% block content_right %}
     <div class="content_right_header">
         Наши новинки
     </div>
     <div class="content_right_product">
-        <a href="{% url 'karkasson' %}" class="product_unit product_unit_new">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
-            <div class="product_unit_name">
-                Каркассон
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">1 300 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'karkasson' %}" class="product_unit product_unit_hot">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
-            <div class="product_unit_name">
-                Каркассон
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">1 300 ₽</div>
-                <div class="product_unit_price_old">1 500 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
-            <div class="product_unit_name">
-                Каркассон
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">1 300 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
-            <div class="product_unit_name">
-                Каркассон
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">1 300 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
-            <div class="product_unit_name">
-                Каркассон
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">1 300 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'karkasson' %}" class="product_unit">
-            <img src="{% static 'main/img/karkasson.jpg' %}" alt="Каркассон">
-            <div class="product_unit_name">
-                Каркассон
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">1 300 ₽</div>
-            </div>
-        </a>
+        {% for _ in ''|rjust:6 %}
+            {% for product in new %}
+                <a href="{% url product.url %}"
+                   class="product_unit product_unit_new">
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
+                    <div class="product_unit_name">
+                        {{ product.name }}
+                    </div>
+                    <div class="product_unit_price_wrap">
+                        <div class="product_unit_price_actual">
+                            {{ product.price }} ₽</div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endfor %}
     </div>
+
     <div class="content_right_header">
         Хит продаж
     </div>
     <div class="content_right_product">
-        <a href="{% url 'machi_koro' %}" class="product_unit">
-            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
-            <div class="product_unit_name">
-                Мачи-Коро
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">900 ₽</div>
-                <div class="product_unit_price_old">1 000 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'machi_koro' %}" class="product_unit">
-            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
-            <div class="product_unit_name">
-                Мачи-Коро
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">900 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'machi_koro' %}" class="product_unit">
-            <img src="{% static 'main/img/machi-koro.jpg' %}" alt="Мачи-Коро">
-            <div class="product_unit_name">
-                Мачи-Коро
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">900 ₽</div>
-            </div>
-        </a>
+        {% for _ in ''|rjust:3 %}
+            {% for product in hot %}
+                <a href="{% url product.url %}"
+                   class="product_unit product_unit_hot">
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
+                    <div class="product_unit_name">
+                        {{ product.name }}
+                    </div>
+                    <div class="product_unit_price_wrap">
+                        <div class="product_unit_price_actual">
+                            {{ product.price }} ₽</div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endfor %}
     </div>
+
     <div class="content_right_header">
         Скидки!
     </div>
+
     <div class="content_right_product">
-        <a href="{% url 'manchkin' %}" class="product_unit">
-            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
-            <div class="product_unit_name">
-                Манчкин
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">900 ₽</div>
-                <div class="product_unit_price_old">1 000 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'manchkin' %}" class="product_unit">
-            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
-            <div class="product_unit_name">
-                Манчкин
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">900 ₽</div>
-                <div class="product_unit_price_old">1 000 ₽</div>
-            </div>
-        </a>
-        <a href="{% url 'manchkin' %}" class="product_unit">
-            <img src="{% static 'main/img/manchkin.jpg' %}" alt="Манчкин">
-            <div class="product_unit_name">
-                Манчкин
-            </div>
-            <div class="product_unit_price_wrap">
-                <div class="product_unit_price_actual">900 ₽</div>
-                <div class="product_unit_price_old">1 000 ₽</div>
-            </div>
-        </a>
+        {% for _ in ''|rjust:3 %}
+            {% for product in sale %}
+                <a href="{% url product.url %}"
+                   class="product_unit">
+                    <img src="{% static product.image_url %}" alt={{ product.name }}>
+                    <div class="product_unit_name">
+                        {{ product.name }}
+                    </div>
+                    <div class="product_unit_price_wrap">
+                        <div class="product_unit_price_actual">900 ₽</div>
+                        <div class="product_unit_price_old">
+                            {{ product.price }} ₽</div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}
 
