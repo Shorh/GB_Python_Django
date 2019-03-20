@@ -1,25 +1,18 @@
 from django.shortcuts import render
-from django.urls import reverse
-from collections import namedtuple
+import json
 
 
 def catalog(request):
-    Product = namedtuple('Product', 'name url image_url price')
-    products = [
-        Product('Каркассон', reverse('products:karkasson'), 'products/img/karkasson.jpg', '1 300'),
-        Product('Мачи Коро', reverse('products:machi_koro'), 'products/img/machi-koro.jpg', '1 000'),
-        Product('Манчкин', reverse('products:manchkin'), 'products/img/manchkin.jpg', '1 000'),
-    ]
-
-    return render(
-        request,
-        'products/index.html',
-        {
-            'title': 'Каталог',
-            'link_list': [''],
-            'products': products,
-        }
-    )
+    with open('products/fixtures/data/data.json') as file:
+        return render(
+            request,
+            'products/index.html',
+            {
+                'title': 'Каталог',
+                'link_list': [''],
+                'products': json.load(file),
+            }
+        )
 
 
 def karkasson(request):
