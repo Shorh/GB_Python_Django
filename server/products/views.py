@@ -12,7 +12,7 @@ def catalog(request):
                 'title': 'Каталог',
                 'link_list': [''],
                 'products': data,
-                'menu': {itm['name']: 0 for itm in data},
+                'menu': [itm['name'] for itm in data],
             }
         )
 
@@ -27,6 +27,6 @@ def product_detail(request, pk):
                 'title': data[pk]['name'],
                 'link_list': ['products/css/product.css'],
                 'product': data[pk],
-                'menu': {itm['name']: 0 for itm in data},
+                'menu': [itm['name'] for itm in data],
             }
         )

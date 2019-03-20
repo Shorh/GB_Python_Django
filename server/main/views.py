@@ -12,7 +12,7 @@ def main(request):
                 'title': 'Сундук с сокровищами',
                 'link_list': ['main/css/index.css'],
                 'products': data,
-                'menu': {itm['name']: 0 for itm in data},
+                'menu': [itm['name'] for itm in data],
             }
         )
 
@@ -26,6 +26,6 @@ def contacts(request):
             {
                 'title': 'Контакты',
                 'link_list': ['main/css/contacts.css'],
-                'menu': {itm['name']: 0 for itm in data},
+                'menu': [itm['name'] for itm in data],
             }
         )
