@@ -8,7 +8,7 @@
     <div class="content_right_product">
         {% for _ in ''|rjust:6 %}
             {% for product in new %}
-                <a href="{% url product.url %}"
+                <a href="{{ product.url }}"
                    class="product_unit product_unit_new">
                     <img src="{% static product.image_url %}" alt={{ product.name }}>
                     <div class="product_unit_name">
@@ -29,7 +29,7 @@
     <div class="content_right_product">
         {% for _ in ''|rjust:3 %}
             {% for product in hot %}
-                <a href="{% url product.url %}"
+                <a href="{{ product.url }}"
                    class="product_unit product_unit_hot">
                     <img src="{% static product.image_url %}" alt={{ product.name }}>
                     <div class="product_unit_name">
@@ -51,7 +51,7 @@
     <div class="content_right_product">
         {% for _ in ''|rjust:3 %}
             {% for product in sale %}
-                <a href="{% url product.url %}"
+                <a href="{{ product.url }}"
                    class="product_unit">
                     <img src="{% static product.image_url %}" alt={{ product.name }}>
                     <div class="product_unit_name">
