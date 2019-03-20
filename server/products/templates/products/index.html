@@ -12,7 +12,7 @@
                    class="product_unit
                           {% if product.status == 'new' %}product_unit_new{% endif %}
                           {% if product.status == 'hot' %}product_unit_hot{% endif %}">
-                    <img src="{% static product.image_url %}" alt={{ product.name }}>
+                    <img src="{{ product.image.url }}" alt={{ product.name }}>
                     <div class="product_unit_name">
                         {{ product.name }}
                     </div>

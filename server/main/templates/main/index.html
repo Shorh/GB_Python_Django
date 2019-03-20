@@ -10,7 +10,7 @@
             {% for product in products %}
                 {% if product.status == 'new' %}
                     <a href="{% url 'products:detail' pk=forloop.counter0 %}" class="product_unit product_unit_new">
-                        <img src="{% static product.image_url %}" alt={{ product.name }}>
+                        <img src="{{ product.image.url }}" alt={{ product.name }}>
                         <div class="product_unit_name">
                             {{ product.name }}
                         </div>
@@ -32,7 +32,7 @@
             {% for product in products %}
                 {% if product.status == 'hot' %}
                     <a href="{% url 'products:detail' pk=forloop.counter0 %}" class="product_unit product_unit_hot">
-                        <img src="{% static product.image_url %}" alt={{ product.name }}>
+                        <img src="{{ product.image.url }}" alt={{ product.name }}>
                         <div class="product_unit_name">
                             {{ product.name }}
                         </div>
@@ -54,7 +54,7 @@
             {% for product in products %}
                 {% if product.status == 'sale' %}
                     <a href="{% url 'products:detail' pk=forloop.counter0 %}" class="product_unit">
-                        <img src="{% static product.image_url %}" alt={{ product.name }}>
+                        <img src="{{ product.image.url }}" alt={{ product.name }}>
                         <div class="product_unit_name">
                             {{ product.name }}
                         </div>
