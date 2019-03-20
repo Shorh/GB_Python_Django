@@ -9,7 +9,7 @@
         {% for _ in ''|rjust:6 %}
             {% for product in products %}
                 {% if product.status == 'new' %}
-                    <a href="{% url 'products:detail' pk=forloop.counter0 %}" class="product_unit product_unit_new">
+                    <a href="{% url 'products:detail' pk=product.id %}" class="product_unit product_unit_new">
                         <img src="{{ product.image.url }}" alt={{ product.name }}>
                         <div class="product_unit_name">
                             {{ product.name }}
@@ -31,7 +31,7 @@
         {% for _ in ''|rjust:3 %}
             {% for product in products %}
                 {% if product.status == 'hot' %}
-                    <a href="{% url 'products:detail' pk=forloop.counter0 %}" class="product_unit product_unit_hot">
+                    <a href="{% url 'products:detail' pk=product.id %}" class="product_unit product_unit_hot">
                         <img src="{{ product.image.url }}" alt={{ product.name }}>
                         <div class="product_unit_name">
                             {{ product.name }}
@@ -53,7 +53,7 @@
         {% for _ in ''|rjust:3 %}
             {% for product in products %}
                 {% if product.status == 'sale' %}
-                    <a href="{% url 'products:detail' pk=forloop.counter0 %}" class="product_unit">
+                    <a href="{% url 'products:detail' pk=product.id %}" class="product_unit">
                         <img src="{{ product.image.url }}" alt={{ product.name }}>
                         <div class="product_unit_name">
                             {{ product.name }}

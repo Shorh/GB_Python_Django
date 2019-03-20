@@ -7,7 +7,7 @@
         <a href="{% url 'products:main' %}">Каталог</a>
         <div class="dropdown_main">
             {% for itm in menu %}
-                <a href="{% url 'products:detail' pk=forloop.counter0 %}">{{ itm }}</a>
+                <a href="{% url 'products:detail' pk=itm.id %}">{{ itm.name }}</a>
             {% endfor %}
         </div>
     </div>
