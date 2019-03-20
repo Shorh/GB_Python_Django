@@ -4,45 +4,29 @@ import json
 
 def catalog(request):
     with open('products/fixtures/data/data.json') as file:
+        data = json.load(file)
         return render(
             request,
             'products/index.html',
             {
                 'title': 'Каталог',
                 'link_list': [''],
-                'products': json.load(file),
+                'products': data,
+                'menu': {itm['name']: 0 for itm in data},
             }
         )
 
 
-def karkasson(request):
-    return render(
-        request,
-        'products/karkasson.html',
-        {
-            'title': 'Каркассон',
-            'link_list': ['products/css/product.css'],
-        }
-    )
-
-
-def machi_koro(request):
-    return render(
-        request,
-        'products/machi-koro.html',
-        {
-            'title': 'Мачи Коро',
-            'link_list': ['products/css/product.css'],
-        }
-    )
-
-
-def manchkin(request):
-    return render(
-        request,
-        'products/manchkin.html',
-        {
-            'title': 'Манчкин',
-            'link_list': ['products/css/product.css'],
-        }
-    )
+def product_detail(request, pk):
+    with open('products/fixtures/data/data.json') as file:
+        data = json.load(file)
+        return render(
+            request,
+            'products/detail.html',
+            {
+                'title': data[pk]['name'],
+                'link_list': ['products/css/product.css'],
+                'product': data[pk],
+                'menu': {itm['name']: 0 for itm in data},
+            }
+        )
