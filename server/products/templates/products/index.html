@@ -6,9 +6,9 @@
         Каталог
     </div>
     <div class="content_right_product">
-        {% for product in products %}
-            {% for _ in ''|rjust:2 %}
-                <a href="{% url product.url %}"
+        {% for _ in ''|rjust:2 %}
+            {% for product in products %}
+                <a href="{% url 'products:detail' pk=forloop.counter0 %}"
                    class="product_unit
                           {% if product.status == 'new' %}product_unit_new{% endif %}
                           {% if product.status == 'hot' %}product_unit_hot{% endif %}">
