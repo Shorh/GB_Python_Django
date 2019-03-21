@@ -7,18 +7,19 @@
     </div>
     <div class="content_right_product">
         {% for _ in ''|rjust:6 %}
-            {% for product in new %}
-                <a href="{% url product.url %}"
-                   class="product_unit product_unit_new">
-                    <img src="{% static product.image_url %}" alt={{ product.name }}>
-                    <div class="product_unit_name">
-                        {{ product.name }}
-                    </div>
-                    <div class="product_unit_price_wrap">
-                        <div class="product_unit_price_actual">
-                            {{ product.price }} ₽</div>
-                    </div>
-                </a>
+            {% for product in products %}
+                {% if product.status == 'new' %}
+                    <a href="{% url 'products:detail' pk=product.id %}" class="product_unit product_unit_new">
+                        <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        <div class="product_unit_name">
+                            {{ product.name }}
+                        </div>
+                        <div class="product_unit_price_wrap">
+                            <div class="product_unit_price_actual">
+                                {{ product.price_now }} ₽</div>
+                        </div>
+                    </a>
+                {% endif %}
             {% endfor %}
         {% endfor %}
     </div>
@@ -28,18 +29,18 @@
     </div>
     <div class="content_right_product">
         {% for _ in ''|rjust:3 %}
-            {% for product in hot %}
-                <a href="{% url product.url %}"
-                   class="product_unit product_unit_hot">
-                    <img src="{% static product.image_url %}" alt={{ product.name }}>
-                    <div class="product_unit_name">
-                        {{ product.name }}
-                    </div>
-                    <div class="product_unit_price_wrap">
-                        <div class="product_unit_price_actual">
-                            {{ product.price }} ₽</div>
-                    </div>
-                </a>
+            {% for product in products %}
+                {% if product.status == 'hot' %}
+                    <a href="{% url 'products:detail' pk=product.id %}" class="product_unit product_unit_hot">
+                        <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        <div class="product_unit_name">
+                            {{ product.name }}
+                        </div>
+                        <div class="product_unit_price_wrap">
+                            <div class="product_unit_price_actual">{{ product.price_now }} ₽</div>
+                        </div>
+                    </a>
+                {% endif %}
             {% endfor %}
         {% endfor %}
     </div>
@@ -50,19 +51,19 @@
 
     <div class="content_right_product">
         {% for _ in ''|rjust:3 %}
-            {% for product in sale %}
-                <a href="{% url product.url %}"
-                   class="product_unit">
-                    <img src="{% static product.image_url %}" alt={{ product.name }}>
-                    <div class="product_unit_name">
-                        {{ product.name }}
-                    </div>
-                    <div class="product_unit_price_wrap">
-                        <div class="product_unit_price_actual">900 ₽</div>
-                        <div class="product_unit_price_old">
-                            {{ product.price }} ₽</div>
-                    </div>
-                </a>
+            {% for product in products %}
+                {% if product.status == 'sale' %}
+                    <a href="{% url 'products:detail' pk=product.id %}" class="product_unit">
+                        <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        <div class="product_unit_name">
+                            {{ product.name }}
+                        </div>
+                        <div class="product_unit_price_wrap">
+                            <div class="product_unit_price_actual">{{ product.price_now }} ₽</div>
+                            <div class="product_unit_price_old">{{ product.price_old }} ₽</div>
+                        </div>
+                    </a>
+                {% endif %}
             {% endfor %}
         {% endfor %}
     </div>

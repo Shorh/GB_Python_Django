@@ -1,0 +1,33 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        {{ product.name }}
+    </div>
+    <div class="product_img_and_short_descroption">
+        <a href="{{ product.image.url }}" target="_blank">
+            <img src="{{ product.image.url }}" alt={{ product.name }} class="game_image">
+        </a>
+        <div class="product_short_description_wrap">
+            <h2 class="product_header">Описание товара</h2>
+            <p class="product_short_description">
+                {{ product.short_description }}
+            </p>
+            <a href="#" class="buy">Купить</a>
+        </div>
+    </div>
+
+    <h2 class="product_header">Характеристики товара</h2>
+    <ul class="product_features">
+{#        {% for itm in product.specifications %}#}
+{#            <li>{{ itm }}</li>#}
+{#        {% endfor %}#}
+        {{ product.specifications }}
+    </ul>
+
+    <h2 class="product_header">Подробное описание товара</h2>
+    <div class="product_full_description">
+        {{ product.description }}
+    </div>
+{% endblock %}

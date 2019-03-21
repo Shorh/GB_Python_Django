@@ -6,9 +6,9 @@
     <div class="root_main">
         <a href="{% url 'products:main' %}">Каталог</a>
         <div class="dropdown_main">
-            <a href="{% url 'products:karkasson' %}">Каркассон</a>
-            <a href="{% url 'products:machi_koro' %}">Мачи-Коро</a>
-            <a href="{% url 'products:manchkin' %}">Манчкин</a>
+            {% for itm in menu %}
+                <a href="{% url 'products:detail' pk=itm.id %}">{{ itm.name }}</a>
+            {% endfor %}
         </div>
     </div>
     <div class="root_main">

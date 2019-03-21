@@ -1,54 +1,33 @@
 from django.shortcuts import render
+from products.models import Product
 from collections import namedtuple
 
 
 def catalog(request):
-    Product = namedtuple('Product', 'name url image_url price')
-    products = [
-        Product('Каркассон', 'products:karkasson', 'products/img/karkasson.jpg', '1 300'),
-        Product('Мачи Коро', 'products:machi_koro', 'products/img/machi-koro.jpg', '1 000'),
-        Product('Манчкин', 'products:manchkin', 'products/img/manchkin.jpg', '1 000'),
-    ]
-
+    data = Product.objects.all()
+    Menu = namedtuple('Menu', 'name, id')
     return render(
         request,
         'products/index.html',
         {
             'title': 'Каталог',
             'link_list': [''],
-            'products': products,
+            'products': data,
+            'menu': [Menu(itm.name, itm.id) for itm in data],
         }
     )
 
 
-def karkasson(request):
+def product_detail(request, pk):
+    data = Product.objects.all()
+    Menu = namedtuple('Menu', 'name, id')
     return render(
         request,
-        'products/karkasson.html',
+        'products/detail.html',
         {
-            'title': 'Каркассон',
+            'title': data.get(id=pk).name,
             'link_list': ['products/css/product.css'],
-        }
-    )
-
-
-def machi_koro(request):
-    return render(
-        request,
-        'products/machi-koro.html',
-        {
-            'title': 'Мачи Коро',
-            'link_list': ['products/css/product.css'],
-        }
-    )
-
-
-def manchkin(request):
-    return render(
-        request,
-        'products/manchkin.html',
-        {
-            'title': 'Манчкин',
-            'link_list': ['products/css/product.css'],
+            'product': data.get(id=pk),
+            'menu': [Menu(itm.name, itm.id) for itm in data],
         }
     )
