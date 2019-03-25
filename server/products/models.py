@@ -14,7 +14,7 @@ class ProductCategory(models.Model):
         max_length=255,
         unique=True
     )
-    description = models.CharField(
+    description = models.TextField(
         verbose_name='Описание категории',
         max_length=500,
         blank=True
