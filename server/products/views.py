@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from products.models import Product
+from django.shortcuts import render, redirect
 from collections import namedtuple
+
+from .models import Product, ProductCategory
+from .forms import CategoryModelForm
 
 
 def catalog(request):
@@ -29,5 +31,24 @@ def product_detail(request, pk):
             'link_list': ['products/css/product.css'],
             'product': data.get(id=pk),
             'menu': [Menu(itm.name, itm.id) for itm in data],
+        }
+    )
+
+
+def category_create(request):
+    form = CategoryModelForm()
+    if request.method == 'POST':
+        form = CategoryModelForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('products:main')
+
+    return render(
+        request,
+        'categories/create.html',
+        {
+            'title': 'Создание категории',
+            'link_list': ['categories/css/create.css'],
+            'form': form,
         }
     )
