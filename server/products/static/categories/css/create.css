@@ -1,0 +1,18 @@
+.create_form textarea {
+    width: 800px;
+    height: 100px;
+}
+
+.create_form label {
+    display: inline-block;
+    line-height: 45px;
+    width: 220px;
+}
+
+.create_form input[type="text"] {
+    width: 400px;
+    height: 35px;
+
+    font-size: 20px;
+    color: rgb(0, 76, 95);
+}
