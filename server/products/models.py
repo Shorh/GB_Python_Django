@@ -31,6 +31,7 @@ class Product(models.Model):
 
     category = models.ForeignKey(
         ProductCategory,
+        verbose_name='Категория',
         on_delete=models.CASCADE,
         related_name='category'
     )
@@ -40,7 +41,7 @@ class Product(models.Model):
     )
     short_description = models.CharField(
         verbose_name='Краткое описание продукта',
-        max_length=300,
+        max_length=1000,
         blank=True
     )
     description = models.TextField(
