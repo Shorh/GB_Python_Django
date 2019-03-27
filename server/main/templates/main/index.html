@@ -10,7 +10,11 @@
             {% for product in products %}
                 {% if product.status == 'new' %}
                     <a href="{% url 'products:detail' pk=product.id %}" class="product_unit product_unit_new">
-                        <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        {% else %}
+                            <img src="{% static 'products/img/default.png' %}" alt={{ product.name }}>
+                        {% endif %}
                         <div class="product_unit_name">
                             {{ product.name }}
                         </div>
@@ -32,7 +36,11 @@
             {% for product in products %}
                 {% if product.status == 'hot' %}
                     <a href="{% url 'products:detail' pk=product.id %}" class="product_unit product_unit_hot">
-                        <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        {% else %}
+                            <img src="{% static 'products/img/default.png' %}" alt={{ product.name }}>
+                        {% endif %}
                         <div class="product_unit_name">
                             {{ product.name }}
                         </div>
@@ -54,7 +62,11 @@
             {% for product in products %}
                 {% if product.status == 'sale' %}
                     <a href="{% url 'products:detail' pk=product.id %}" class="product_unit">
-                        <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt={{ product.name }}>
+                        {% else %}
+                            <img src="{% static 'products/img/default.png' %}" alt={{ product.name }}>
+                        {% endif %}
                         <div class="product_unit_name">
                             {{ product.name }}
                         </div>
