@@ -6,7 +6,10 @@ from products.models import ProductCategory
 def category_create(request):
     form = CategoryModelForm()
     if request.method == 'POST':
-        form = CategoryModelForm(data=request.POST)
+        form = CategoryModelForm(
+            data=request.POST,
+            files=request.FILES,
+        )
         if form.is_valid():
             form.save()
             return redirect('products:main')
@@ -29,7 +32,11 @@ def category_update(request, pk):
     )
 
     if request.method == 'POST':
-        form = CategoryModelForm(data=request.POST, instance=obj)
+        form = CategoryModelForm(
+            data=request.POST,
+            files=request.FILES,
+            instance=obj
+        )
 
         if form.is_valid():
             form.save()

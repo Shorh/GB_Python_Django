@@ -1,6 +1,6 @@
 {% load staticfiles %}
 
-<form method="post">
+<form method="POST" enctype="multipart/form-data">
     {% for err in form.non_field_errors %}
         <div class="alert alert-danger">
             <span>{{ err }}</span>

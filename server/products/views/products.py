@@ -38,7 +38,10 @@ def product_detail(request, pk):
 def product_create(request):
     form = ProductModelForm()
     if request.method == 'POST':
-        form = ProductModelForm(data=request.POST)
+        form = ProductModelForm(
+            data=request.POST,
+            files=request.FILES,
+        )
         if form.is_valid():
             form.save()
             return redirect('products:main')
@@ -61,7 +64,11 @@ def product_update(request, pk):
     )
 
     if request.method == 'POST':
-        form = ProductModelForm(data=request.POST, instance=obj)
+        form = ProductModelForm(
+            data=request.POST,
+            files=request.FILES,
+            instance=obj,
+        )
 
         if form.is_valid():
             form.save()
