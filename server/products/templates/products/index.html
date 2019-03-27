@@ -8,25 +8,7 @@
     <div class="content_right_product">
         {% for _ in ''|rjust:2 %}
             {% for product in products %}
-                <a href="{% url 'products:detail' pk=product.id %}"
-                   class="product_unit
-                          {% if product.status == 'new' %}product_unit_new{% endif %}
-                          {% if product.status == 'hot' %}product_unit_hot{% endif %}">
-                    {% if product.image %}
-                        <img src="{{ product.image.url }}" alt={{ product.name }}>
-                    {% else %}
-                        <img src="{% static 'products/img/default.png' %}" alt={{ product.name }}>
-                    {% endif %}
-                    <div class="product_unit_name">
-                        {{ product.name }}
-                    </div>
-                    <div class="product_unit_price_wrap">
-                        <div class="product_unit_price_actual">{{ product.price_now }} ₽</div>
-                        {% if product.status == 'sale' %}
-                            <div class="product_unit_price_old"> {{ product.price_old }} ₽</div>
-                        {% endif %}
-                    </div>
-                </a>
+                {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
             {% endfor %}
         {% endfor %}
     </div>
