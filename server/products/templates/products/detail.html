@@ -20,9 +20,6 @@
 
     <h2 class="product_header">Характеристики товара</h2>
     <ul class="product_features">
-{#        {% for itm in product.specifications %}#}
-{#            <li>{{ itm }}</li>#}
-{#        {% endfor %}#}
         {{ product.specifications|safe }}
     </ul>
 
