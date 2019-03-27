@@ -12,7 +12,7 @@
         <div class="product_short_description_wrap">
             <h2 class="product_header">Описание товара</h2>
             <p class="product_short_description">
-                {{ product.short_description }}
+                {{ product.short_description|safe }}
             </p>
             <a href="#" class="buy">Купить</a>
         </div>
@@ -23,11 +23,11 @@
 {#        {% for itm in product.specifications %}#}
 {#            <li>{{ itm }}</li>#}
 {#        {% endfor %}#}
-        {{ product.specifications }}
+        {{ product.specifications|safe }}
     </ul>
 
     <h2 class="product_header">Подробное описание товара</h2>
     <div class="product_full_description">
-        {{ product.description }}
+        {{ product.description|safe }}
     </div>
 {% endblock %}
