@@ -103,8 +103,7 @@
 }
 
 .product_features li {
-    list-style: none;
-    background: url(../img/list.png) no-repeat left center;
+    list-style: square outside;
     background-size: 2%;
     padding-left: 35px;
 }

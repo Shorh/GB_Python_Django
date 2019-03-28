@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% for err in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <span>{{ err }}</span>
+        </div>
+    {% endfor %}
+
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="create_form">
+            <label for="{{ field.name }}">
+                {{ field.label }}
+            </label>
+            {{ field }}
+
+            {% for err in field.errors %}
+                <small class="field_error">
+                    {{ err }}
+                </small>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <input type="submit">
+</form>

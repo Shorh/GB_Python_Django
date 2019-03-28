@@ -1,0 +1,14 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Удаление категории "{{ obj.name }}"
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <span>Категория "{{ obj.name }}" будет удалена без возможности ее восстановления. Удалить категорию?</span>
+        <br>
+        <input type="submit">
+    </form>
+{% endblock %}
