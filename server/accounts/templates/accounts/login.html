@@ -1,0 +1,9 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Вход
+    </div>
+    {% include 'server/includes/inc_form.html' with form=form %}
+{% endblock %}
