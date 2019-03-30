@@ -1,0 +1,28 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        {{ category.name }}
+    </div>
+    <div class="product_img_and_short_description">
+        <a href="{{ category.image.url }}" target="_blank">
+            <img src="{{ category.image.url }}" alt={{ category.name }} class="game_image">
+        </a>
+        <div class="product_short_description_wrap">
+            <h2 class="product_header">Описание категории</h2>
+            <p class="product_short_description">
+                {{ category.description|safe }}
+            </p>
+        </div>
+    </div>
+
+    <div class="content_right_header">
+        Игры из категории "{{ category.name }}"
+    </div>
+    <div class="content_right_product">
+        {% for product in category.category.all %}
+            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
+        {% endfor %}
+    </div>
+{% endblock %}
