@@ -7,7 +7,11 @@
     </div>
     <div class="product_img_and_short_description">
         <a href="{{ category.image.url }}" target="_blank">
-            <img src="{{ category.image.url }}" alt={{ category.name }} class="game_image">
+            {% if category.image %}
+                <img src="{{ category.image.url }}" alt={{ category.name }} class="game_image">
+            {% else %}
+                <img src="{% static 'products/img/default.png' %}" alt={{ category.name }} class="game_image">
+            {% endif %}
         </a>
         <div class="product_short_description_wrap">
             <h2 class="product_header">Описание категории</h2>
