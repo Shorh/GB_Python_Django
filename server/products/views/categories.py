@@ -48,7 +48,7 @@ def category_create(request):
         'categories/create.html',
         {
             'title': 'Создание категории',
-            'link_list': ['categories/css/crud.css'],
+            'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
             'form': form,
         }
@@ -77,7 +77,7 @@ def category_update(request, pk):
         'categories/update.html',
         {
             'title': 'Изменение категории',
-            'link_list': ['categories/css/crud.css'],
+            'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
             'form': form,
             'obj': obj,
@@ -97,7 +97,7 @@ def category_delete(request, pk):
         'categories/delete.html',
         {
             'title': 'Удаление категории',
-            'link_list': ['categories/css/crud.css'],
+            'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
             'obj': obj,
         }

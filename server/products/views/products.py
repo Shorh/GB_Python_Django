@@ -47,7 +47,7 @@ def product_create(request):
         'categories/create.html',
         {
             'title': 'Создание продукта',
-            'link_list': ['products/css/crud.css'],
+            'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
             'form': form,
         }
@@ -76,7 +76,7 @@ def product_update(request, pk):
         'products/update.html',
         {
             'title': 'Изменение продукта',
-            'link_list': ['products/css/crud.css'],
+            'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
             'form': form,
             'obj': obj,
@@ -96,7 +96,7 @@ def product_delete(request, pk):
         'products/delete.html',
         {
             'title': 'Удаление продукта',
-            'link_list': ['products/css/crud.css'],
+            'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
             'obj': obj,
         }
