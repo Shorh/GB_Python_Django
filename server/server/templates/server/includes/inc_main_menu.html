@@ -4,13 +4,12 @@
         <li><a href="{% url 'main:main' %}">Главная</a></li>
         <li><a href="{% url 'products:main' %}">Каталог</a>
             <ul>
-                {% for itm_c in menu_categories %}
-                    <li><a href="{% url 'categories:detail' pk=itm_c.id %}">{{ itm_c.name }}</a>
+                <li><a href="{% url 'categories:main' %}">Все категории</a></li>
+                {% for category in menu %}
+                    <li><a href="{% url 'categories:detail' pk=category.id %}">{{ category.name }}</a>
                         <ul>
-                            {% for itm_p in menu_products %}
-                                {% if itm_p.category_id == itm_c.id %}
-                                    <li><a href="{% url 'products:detail' pk=itm_p.id %}">{{ itm_p.name }}</a></li>
-                                {% endif %}
+                            {% for product in category.category.all %}
+                                <li><a href="{% url 'products:detail' pk=product.id %}">{{ product.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
