@@ -1,4 +1,4 @@
-.product_img_and_short_descroption::after {
+.product_img_and_short_description::after {
     display: block;
     clear: both;
     content: "";
