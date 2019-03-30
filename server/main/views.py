@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from server.menu import Menu, products
+from products.models import ProductCategory, Product
 
 
 def main(request):
@@ -9,8 +9,8 @@ def main(request):
         {
             'title': 'Сундук с сокровищами',
             'link_list': ['main/css/index.css'],
-            'products': products,
-            'menu': Menu,
+            'products': Product.objects.all(),
+            'menu': ProductCategory.objects.all(),
         }
     )
 
@@ -22,6 +22,6 @@ def contacts(request):
         {
             'title': 'Контакты',
             'link_list': ['main/css/contacts.css'],
-            'menu': Menu,
+            'menu': ProductCategory.objects.all(),
         }
     )

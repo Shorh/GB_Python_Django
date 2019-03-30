@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from server.menu import Menu, products
 
-from products.models import Product
+from products.models import Product, ProductCategory
 from products.forms import ProductModelForm
 
 
@@ -12,21 +11,22 @@ def product_list(request):
         {
             'title': 'Каталог',
             'link_list': [''],
-            'products': products,
-            'menu': Menu,
+            'products': Product.objects.all(),
+            'menu': ProductCategory.objects.all(),
         }
     )
 
 
 def product_detail(request, pk):
+    obj = get_object_or_404(Product, pk=pk)
     return render(
         request,
         'products/detail.html',
         {
-            'title': products.get(id=pk).name,
+            'title': obj.name,
             'link_list': ['products/css/product.css'],
-            'product': products.get(id=pk),
-            'menu': Menu,
+            'product': obj,
+            'menu': ProductCategory.objects.all(),
         }
     )
 
@@ -48,7 +48,7 @@ def product_create(request):
         {
             'title': 'Создание продукта',
             'link_list': ['products/css/crud.css'],
-            'menu': Menu,
+            'menu': ProductCategory.objects.all(),
             'form': form,
         }
     )
@@ -77,7 +77,7 @@ def product_update(request, pk):
         {
             'title': 'Изменение продукта',
             'link_list': ['products/css/crud.css'],
-            'menu': Menu,
+            'menu': ProductCategory.objects.all(),
             'form': form,
             'obj': obj,
         }
@@ -97,7 +97,7 @@ def product_delete(request, pk):
         {
             'title': 'Удаление продукта',
             'link_list': ['products/css/crud.css'],
-            'menu': Menu,
+            'menu': ProductCategory.objects.all(),
             'obj': obj,
         }
     )

@@ -1,6 +1,35 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from products.forms import CategoryModelForm
 from products.models import ProductCategory
+
+from products.models import ProductCategory
+from products.forms import CategoryModelForm
+
+
+def category_list(request):
+    return render(
+        request,
+        'categories/index.html',
+        {
+            'title': 'Категории',
+            'link_list': [''],
+            'categories': ProductCategory.objects.all(),
+            'menu': ProductCategory.objects.all(),
+        }
+    )
+
+
+def category_detail(request, pk):
+    obj = get_object_or_404(ProductCategory, pk=pk)
+    return render(
+        request,
+        'categories/detail.html',
+        {
+            'title': obj.name,
+            'link_list': ['products/css/product.css'],
+            'category': obj,
+            'menu': ProductCategory.objects.all(),
+        }
+    )
 
 
 def category_create(request):
@@ -19,7 +48,8 @@ def category_create(request):
         'categories/create.html',
         {
             'title': 'Создание категории',
-            'link_list': ['categories/css/crut.css'],
+            'link_list': ['categories/css/crud.css'],
+            'menu': ProductCategory.objects.all(),
             'form': form,
         }
     )
@@ -47,7 +77,8 @@ def category_update(request, pk):
         'categories/update.html',
         {
             'title': 'Изменение категории',
-            'link_list': ['categories/css/crut.css'],
+            'link_list': ['categories/css/crud.css'],
+            'menu': ProductCategory.objects.all(),
             'form': form,
             'obj': obj,
         }
@@ -66,7 +97,8 @@ def category_delete(request, pk):
         'categories/delete.html',
         {
             'title': 'Удаление категории',
-            'link_list': ['categories/css/crut.css'],
+            'link_list': ['categories/css/crud.css'],
+            'menu': ProductCategory.objects.all(),
             'obj': obj,
         }
     )
