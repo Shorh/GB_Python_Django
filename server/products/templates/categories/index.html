@@ -1,0 +1,15 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Категории
+    </div>
+    <div class="content_right_product">
+        {% for _ in ''|rjust:2 %}
+            {% for category in categories %}
+                {% include 'server/includes/inc_category.html' with id=category.id image=category.image name=category.name %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
