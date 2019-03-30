@@ -1,26 +1,3 @@
-{#<div class="menu_wrap">#}
-{#    <div class="menu_wrap_text">Меню</div>#}
-{#    <div class="root_main">#}
-{#        <a href="{% url 'main:main' %}">Главная</a>#}
-{#    </div>#}
-{#    <div class="root_main">#}
-{#        <a href="{% url 'products:main' %}">Каталог</a>#}
-{#        <div class="dropdown_main">#}
-{#            {% for itm in menu %}#}
-{#                <a href="{% url 'products:detail' pk=itm.id %}">{{ itm.name }}</a>#}
-{#                <div class="dropdown_child">#}
-{#                    {% for itm_1 in menu %}#}
-{#                        <a href="{% url 'products:detail' pk=itm_1.id %}">{{ itm_1.name }}</a>#}
-{#                    {% endfor %}#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-{#    <div class="root_main">#}
-{#        <a href="{% url 'main:contacts' %}">Контакты</a>#}
-{#    </div>#}
-{#</div>#}
-
 <div class="menu_wrap">
     <div class="menu_wrap_text">Меню</div>
     <ul>
@@ -28,7 +5,7 @@
         <li><a href="{% url 'products:main' %}">Каталог</a>
             <ul>
                 {% for itm in menu %}
-                    <li><a href="{% url 'products:detail' pk=itm.id %}">{{ itm.name }}</a>
+                    <li><a href="{% url 'categories:detail' pk=itm.id %}">{{ itm.name }}</a>
                         <ul>
                             {% for itm_1 in menu %}
                                 <li><a href="{% url 'products:detail' pk=itm_1.id %}">{{ itm_1.name }}</a></li>
