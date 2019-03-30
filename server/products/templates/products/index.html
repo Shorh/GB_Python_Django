@@ -6,10 +6,8 @@
         Каталог
     </div>
     <div class="content_right_product">
-        {% for _ in ''|rjust:2 %}
-            {% for product in products %}
-                {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
-            {% endfor %}
+        {% for product in products %}
+            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
         {% endfor %}
     </div>
 {% endblock %}
