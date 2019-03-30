@@ -8,6 +8,8 @@
                 {% for category in menu %}
                     <li><a href="{% url 'categories:detail' pk=category.id %}">{{ category.name }}</a>
                         <ul>
+                            {# Вместо category.product_set.all используем category.category.all, т.к. #}
+                            {# в модели Product в поле category стоит related_name='category' #}
                             {% for product in category.category.all %}
                                 <li><a href="{% url 'products:detail' pk=product.id %}">{{ product.name }}</a></li>
                             {% endfor %}
