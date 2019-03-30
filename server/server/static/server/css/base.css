@@ -115,50 +115,6 @@
     float: left;
 }
 
-.menu_wrap, .menu_wrap .dropdown_main {
-    background-color: #26d2fc;
-    margin-top: -20px;
-}
-
-.menu_wrap_text {
-    padding-left: 40px;
-    font-family: "Roboto Black", sans-serif;
-    font-size: 14px;
-    line-height: 66px;
-    text-transform: uppercase;
-    color: #ffffff;
-    background-color: #333333;
-}
-
-.root_main a {
-    display: block;
-    padding-left: 40px;
-    text-decoration: none;
-    color: #000000;
-    font-family: "Roboto Black", sans-serif;
-    font-size: 14px;
-    line-height: 43px;
-    text-transform: uppercase;
-}
-
-.root_main a:hover {
-    color: #ffffff;
-    background-color: #333333;
-}
-
-.root_main:hover .dropdown_main {
-    display: block;
-}
-
-.dropdown_main {
-    display: none;
-    position: absolute;
-    left: 270px;
-    top: 66px;
-    width: 270px;
-    z-index: 1;
-}
-
 .now_is_open {
     background: url(../img/shop.jpg) no-repeat;
     background-size: auto 300px;
