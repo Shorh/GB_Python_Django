@@ -1,36 +1,32 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from collections import namedtuple
+from server.menu import Menu, products
 
 from products.models import Product
 from products.forms import ProductModelForm
 
 
-def catalog(request):
-    data = Product.objects.all()
-    Menu = namedtuple('Menu', 'name, id')
+def product_list(request):
     return render(
         request,
         'products/index.html',
         {
             'title': 'Каталог',
             'link_list': [''],
-            'products': data,
-            'menu': [Menu(itm.name, itm.id) for itm in data],
+            'products': products,
+            'menu': Menu,
         }
     )
 
 
 def product_detail(request, pk):
-    data = Product.objects.all()
-    Menu = namedtuple('Menu', 'name, id')
     return render(
         request,
         'products/detail.html',
         {
-            'title': data.get(id=pk).name,
+            'title': products.get(id=pk).name,
             'link_list': ['products/css/product.css'],
-            'product': data.get(id=pk),
-            'menu': [Menu(itm.name, itm.id) for itm in data],
+            'product': products.get(id=pk),
+            'menu': Menu,
         }
     )
 
@@ -51,7 +47,8 @@ def product_create(request):
         'categories/create.html',
         {
             'title': 'Создание продукта',
-            'link_list': ['products/css/crut.css'],
+            'link_list': ['products/css/crud.css'],
+            'menu': Menu,
             'form': form,
         }
     )
@@ -79,7 +76,8 @@ def product_update(request, pk):
         'products/update.html',
         {
             'title': 'Изменение продукта',
-            'link_list': ['products/css/crut.css'],
+            'link_list': ['products/css/crud.css'],
+            'menu': Menu,
             'form': form,
             'obj': obj,
         }
@@ -98,7 +96,8 @@ def product_delete(request, pk):
         'products/delete.html',
         {
             'title': 'Удаление продукта',
-            'link_list': ['products/css/crut.css'],
+            'link_list': ['products/css/crud.css'],
+            'menu': Menu,
             'obj': obj,
         }
     )
