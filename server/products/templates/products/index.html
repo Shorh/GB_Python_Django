@@ -7,7 +7,53 @@
     </div>
     <div class="content_right_product">
         {% for product in products %}
-            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
+            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image_url=product.image.url name=product.name price_now=product.price_now price_old=product.price_old %}
         {% endfor %}
     </div>
+    <button id="load-button">Показать все</button>
+{% endblock %}
+
+{% block page_scripts %}
+    <script>
+        const url = 'http://127.0.0.1:8000/products/api/';
+        const container = document.querySelector('.content_right_product');
+
+        const loadButton = document.querySelector('#load-button');
+
+        const asyncLoadData = () => {
+            fetch(url)
+                .then(response => response.json())
+                .then(
+                    response => {
+                        let loadedHtml = '';
+                        response.results.map(
+                            itm => {
+                                loadedHtml += renderProduct(itm)
+                            }
+                        );
+                        container.innerHTML = loadedHtml
+                    }
+                )
+        };
+
+        const renderProduct = ({id, name, price_now, price_old, image_url, status}) => (
+            `
+            <a href="/products/${ id }/"
+                class="product_unit
+                    ${ status === 'new' ? 'product_unit_new' : ''}
+                    ${ status === 'hot' ? 'product_unit_hot' : ''}
+                <img src="${ image_url }" alt="${ name }">
+                <div class="product_unit_name">
+                    ${ name }
+                </div>
+                <div class="product_unit_price_wrap">
+                    <div class="product_unit_price_actual">${ price_now } ₽</div>
+                    ${ status === 'sale' ? '<div class="product_unit_price_old">' + price_old + ' ₽</div>' : ''}
+                </div>
+            </a>
+            `
+        );
+
+        loadButton.addEventListener('click', asyncLoadData);
+    </script>
 {% endblock %}
