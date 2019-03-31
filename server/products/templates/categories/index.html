@@ -7,7 +7,7 @@
     </div>
     <div class="content_right_product">
         {% for category in categories %}
-            {% include 'server/includes/inc_category.html' with id=category.id image=category.image name=category.name %}
+            {% include 'server/includes/inc_category.html' with id=category.id image_url=category.image.url name=category.name %}
         {% endfor %}
     </div>
 {% endblock %}
