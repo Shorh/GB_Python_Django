@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 
 from products.models import Product, ProductCategory
 from products.forms import ProductModelForm
@@ -11,7 +12,7 @@ def product_list(request):
         {
             'title': 'Каталог',
             'link_list': [''],
-            'products': Product.objects.all(),
+            'products': Product.objects.all()[:3],
             'menu': ProductCategory.objects.all(),
         }
     )
@@ -101,3 +102,22 @@ def product_delete(request, pk):
             'obj': obj,
         }
     )
+
+
+def product_rest_list(request):
+    object_list = Product.objects.all()
+    data = []
+
+    for itm in object_list:
+        data.append(
+            {
+                'id': itm.id,
+                'name': itm.name,
+                'price_now': itm.price_now,
+                'price_old': itm.price_old,
+                'image_url': itm.image.url if itm.image else None,
+                'status': itm.status
+            }
+        )
+
+    return JsonResponse({'results': data})
