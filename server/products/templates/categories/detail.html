@@ -1,0 +1,36 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        {{ category.name }}
+    </div>
+    <div class="product_img_and_short_description">
+        <a href="{{ category.image.url }}" target="_blank">
+            {% if category.image %}
+                <img src="{{ category.image.url }}" alt={{ category.name }} class="game_image">
+            {% else %}
+                <img src="{% static 'products/img/default.png' %}" alt={{ category.name }} class="game_image">
+            {% endif %}
+        </a>
+        <div class="product_short_description_wrap">
+            <h2 class="product_header">Описание категории</h2>
+            <p class="product_short_description">
+                {{ category.description|safe }}
+            </p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="content_right_header">
+        Игры из категории "{{ category.name }}"
+    </div>
+    <div class="content_right_product">
+        {# Вместо category.product_set.all используем category.category.all, т.к. #}
+        {# в модели Product в поле category стоит related_name='category' #}
+        {% for product in category.category.all %}
+            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image_url=product.image.url name=product.name price_now=product.price_now price_old=product.price_old %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,36 +1,33 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from collections import namedtuple
+from django.http import JsonResponse
 
-from products.models import Product
+from products.models import Product, ProductCategory
 from products.forms import ProductModelForm
 
 
-def catalog(request):
-    data = Product.objects.all()
-    Menu = namedtuple('Menu', 'name, id')
+def product_list(request):
     return render(
         request,
         'products/index.html',
         {
             'title': 'Каталог',
             'link_list': [''],
-            'products': data,
-            'menu': [Menu(itm.name, itm.id) for itm in data],
+            'products': Product.objects.all()[:3],
+            'menu': ProductCategory.objects.all(),
         }
     )
 
 
 def product_detail(request, pk):
-    data = Product.objects.all()
-    Menu = namedtuple('Menu', 'name, id')
+    obj = get_object_or_404(Product, pk=pk)
     return render(
         request,
         'products/detail.html',
         {
-            'title': data.get(id=pk).name,
+            'title': obj.name,
             'link_list': ['products/css/product.css'],
-            'product': data.get(id=pk),
-            'menu': [Menu(itm.name, itm.id) for itm in data],
+            'product': obj,
+            'menu': ProductCategory.objects.all(),
         }
     )
 
@@ -51,7 +48,8 @@ def product_create(request):
         'categories/create.html',
         {
             'title': 'Создание продукта',
-            'link_list': ['products/css/crut.css'],
+            'link_list': ['server/css/crud.css'],
+            'menu': ProductCategory.objects.all(),
             'form': form,
         }
     )
@@ -79,7 +77,8 @@ def product_update(request, pk):
         'products/update.html',
         {
             'title': 'Изменение продукта',
-            'link_list': ['products/css/crut.css'],
+            'link_list': ['server/css/crud.css'],
+            'menu': ProductCategory.objects.all(),
             'form': form,
             'obj': obj,
         }
@@ -98,7 +97,27 @@ def product_delete(request, pk):
         'products/delete.html',
         {
             'title': 'Удаление продукта',
-            'link_list': ['products/css/crut.css'],
+            'link_list': ['server/css/crud.css'],
+            'menu': ProductCategory.objects.all(),
             'obj': obj,
         }
     )
+
+
+def product_rest_list(request):
+    object_list = Product.objects.all()
+    data = []
+
+    for itm in object_list:
+        data.append(
+            {
+                'id': itm.id,
+                'name': itm.name,
+                'price_now': itm.price_now,
+                'price_old': itm.price_old,
+                'image_url': itm.image.url if itm.image else None,
+                'status': itm.status
+            }
+        )
+
+    return JsonResponse({'results': data})

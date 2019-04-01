@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<a href="{% url 'categories:detail' pk=id %}"
+   class="product_unit">
+    {% if image %}
+        <img src="{{ image.url }}" alt={{ name }}>
+    {% else %}
+        <img src="{% static 'products/img/default.png' %}" alt={{ name }}>
+    {% endif %}
+    <div class="product_unit_name">
+        {{ name }}
+    </div>
+</a>

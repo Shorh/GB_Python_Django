@@ -1,0 +1,111 @@
+@font-face {
+    font-family: "Roboto Black";
+    src: url(../fonts/Roboto-Black.ttf);
+}
+
+/*.menu_wrap, .dropdown_main, .dropdown_child {*/
+/*    background-color: #26d2fc;*/
+/*    margin-top: -20px;*/
+/*}*/
+
+/*.menu_wrap_text {*/
+/*    padding-left: 40px;*/
+/*    font-family: "Roboto Black", sans-serif;*/
+/*    font-size: 14px;*/
+/*    line-height: 66px;*/
+/*    text-transform: uppercase;*/
+/*    color: #ffffff;*/
+/*    background-color: #333333;*/
+/*}*/
+
+/*.root_main {*/
+/*    position: relative;*/
+/*}*/
+
+/*.root_main a {*/
+/*    display: block;*/
+/*    padding-left: 40px;*/
+/*    text-decoration: none;*/
+/*    color: #000000;*/
+/*    font-family: "Roboto Black", sans-serif;*/
+/*    font-size: 14px;*/
+/*    line-height: 43px;*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*.root_main a:hover {*/
+/*    color: #ffffff;*/
+/*    background-color: #333333;*/
+/*}*/
+
+/*.root_main:hover .dropdown_main,*/
+/*.dropdown_main:hover .dropdown_child{*/
+/*    display: block;*/
+/*}*/
+
+/*.dropdown_main, .dropdown_child {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    left: 270px;*/
+/*    top: 20px;*/
+/*    width: 270px;*/
+/*    z-index: 1;*/
+/*}*/
+
+.menu_wrap,
+.menu_wrap li ul {
+    background-color: #26d2fc;
+    margin-top: -20px;
+}
+
+.menu_wrap * {
+    margin: 0;
+    padding: 0;
+}
+
+.menu_wrap_text {
+    padding-left: 40px;
+    font-family: "Roboto Black", sans-serif;
+    font-size: 14px;
+    line-height: 66px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #333333;
+}
+
+.menu_wrap ul {
+    list-style: none;
+}
+
+.menu_wrap > ul li {
+    position: relative;
+}
+
+ .menu_wrap > ul li a {
+    display: block;
+    padding-left: 40px;
+    text-decoration: none;
+    color: #000000;
+    font-family: "Roboto Black", sans-serif;
+    font-size: 14px;
+    line-height: 43px;
+    text-transform: uppercase;
+}
+
+.menu_wrap li a:hover {
+    color: #ffffff;
+    background-color: #333333;
+}
+
+.menu_wrap li ul {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: -270px;
+    width: 270px;
+    z-index: 1;
+}
+
+.menu_wrap li:hover > ul {
+    display: block;
+}

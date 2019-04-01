@@ -1,0 +1,14 @@
+{% extends 'server/base.html' %}
+{% load staticfiles %}
+
+{% block content_right %}
+    <div class="content_right_header">
+        Удаление пользоватлея "{{ name }}"
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <span>Пользователь "{{ name }}" будет удален без возможности восстановления. Удалить пользователя?</span>
+        <br>
+        <input type="submit">
+    </form>
+{% endblock %}
