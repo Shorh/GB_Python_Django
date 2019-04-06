@@ -1,5 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import (
+    render, redirect, get_object_or_404
+)
 from django.http import JsonResponse
+from django.views.generic import (
+    View
+)
 
 from products.models import Product, ProductCategory
 from products.forms import ProductModelForm
@@ -32,27 +37,42 @@ def product_detail(request, pk):
     )
 
 
-def product_create(request):
-    form = ProductModelForm()
-    if request.method == 'POST':
-        form = ProductModelForm(
-            data=request.POST,
-            files=request.FILES,
+class ProductCreate(View):
+    form_class = ProductModelForm
+    template_name = 'categories/create.html'
+    success_url = 'products:main'
+
+    def get(self, *args, **kwargs):
+        return render(
+            self.request,
+            self.template_name,
+            {
+                'title': 'Создание продукта',
+                'link_list': ['server/css/crud.css'],
+                'menu': ProductCategory.objects.all(),
+                'form': self.form_class(),
+            }
+        )
+
+    def post(self, *args, **kwargs):
+        form = self.form_class(
+            data=self.request.POST,
+            files=self.request.FILES,
         )
         if form.is_valid():
             form.save()
-            return redirect('products:main')
+            return redirect(self.success_url)
 
-    return render(
-        request,
-        'categories/create.html',
-        {
-            'title': 'Создание продукта',
-            'link_list': ['server/css/crud.css'],
-            'menu': ProductCategory.objects.all(),
-            'form': form,
-        }
-    )
+        return render(
+            self.request,
+            self.template_name,
+            {
+                'title': 'Создание продукта',
+                'link_list': ['server/css/crud.css'],
+                'menu': ProductCategory.objects.all(),
+                'form': form,
+            }
+        )
 
 
 def product_update(request, pk):
