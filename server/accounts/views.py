@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import login
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
 from products.models import ProductCategory
