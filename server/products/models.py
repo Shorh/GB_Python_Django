@@ -1,9 +1,6 @@
 from django.db import models
 
 
-DEFAULT_IMG = '../static/product/img/default.png'
-
-
 class ProductCategory(models.Model):
     class Meta:
         verbose_name = 'Категория продуктов'
@@ -70,7 +67,6 @@ class Product(models.Model):
     )
     image = models.ImageField(
         upload_to='products_images',
-        default=DEFAULT_IMG,
         blank=True
     )
     status = models.CharField(

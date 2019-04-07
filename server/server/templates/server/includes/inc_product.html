@@ -7,7 +7,7 @@
     {% if image_url %}
         <img src="{{ image_url }}" alt={{ name }}>
     {% else %}
-        <img src="{% static 'products/img/default.png' %}" alt={{ name }}>
+        <img src="/media/products_images/default.png" alt={{ name }}>
     {% endif %}
     <div class="product_unit_name">
         {{ name }}

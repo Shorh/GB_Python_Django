@@ -42,7 +42,8 @@
                 class="product_unit
                     ${ status === 'new' ? 'product_unit_new' : ''}
                     ${ status === 'hot' ? 'product_unit_hot' : ''}">
-                <img src="${ image_url }" alt="${ name }">
+                <img src="${ image_url ? image_url : '/media/products_images/default.png' }"
+                    alt="${ name }">
                 <div class="product_unit_name">
                     ${ name }
                 </div>
