@@ -109,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'accounts.AccountUser'
 
 LOGIN_REDIRECT_URL = reverse_lazy('main:main')
+LOGOUT_REDIRECT_URL = reverse_lazy('main:main')
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
