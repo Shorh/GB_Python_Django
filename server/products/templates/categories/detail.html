@@ -3,22 +3,22 @@
 
 {% block content_right %}
     <div class="content_right_header">
-        {{ obj.name }}
+        {{ object.name }}
     </div>
     <div class="product_img_and_short_description">
-        {% if obj.image %}
-            <a href="{{ obj.image.url }}" target="_blank">
-                <img src="{{ obj.image.url }}" alt={{ obj.name }} class="game_image">
+        {% if object.image %}
+            <a href="{{ object.image.url }}" target="_blank">
+                <img src="{{ object.image.url }}" alt={{ object.name }} class="game_image">
             </a>
         {% else %}
             <a href="/media/products_images/default.png" target="_blank">
-                <img src="/media/products_images/default.png" alt={{ obj.name }} class="game_image">
+                <img src="/media/products_images/default.png" alt={{ object.name }} class="game_image">
             </a>
         {% endif %}
         <div class="product_short_description_wrap">
             <h2 class="product_header">Описание категории</h2>
             <p class="product_short_description">
-                {{ obj.description|safe }}
+                {{ object.description|safe }}
             </p>
         </div>
     </div>
@@ -26,13 +26,15 @@
     <br>
 
     <div class="content_right_header">
-        Игры из категории "{{ obj.name }}"
+        Игры из категории "{{ object.name }}"
     </div>
     <div class="content_right_product">
-        {# Вместо obj.product_set.all используем obj.category.all, т.к. #}
+        {# Вместо object.product_set.all используем object.category.all, т.к. #}
         {# в модели Product в поле category стоит related_name='category' #}
-        {% for product in obj.category.all %}
+        {% for product in page_object %}
             {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
         {% endfor %}
     </div>
+
+   {% include 'server/includes/inc_pagination.html' with page=page_object paginator=page_object.paginator %}
 {% endblock %}
