@@ -3,125 +3,85 @@ from django.shortcuts import (
 )
 from django.http import JsonResponse
 from django.views.generic import (
-    View
+    CreateView, UpdateView, DeleteView, ListView, DetailView
 )
+from django.urls import reverse_lazy
 
 from products.models import Product, ProductCategory
 from products.forms import ProductModelForm
 
 
-def product_list(request):
-    return render(
-        request,
-        'products/index.html',
-        {
-            'title': 'Каталог',
-            'link_list': [''],
-            'products': Product.objects.all()[:3],
-            'menu': ProductCategory.objects.all(),
-        }
-    )
+class ProductList(ListView):
+    model = Product
+    template_name = 'products/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Каталог'
+        context['link_list'] = ['']
+        context['menu'] = ProductCategory.objects.all()
+        context['products'] = Product.objects.all()[:3]
+
+        return context
 
 
-def product_detail(request, pk):
-    obj = get_object_or_404(Product, pk=pk)
-    return render(
-        request,
-        'products/detail.html',
-        {
-            'title': obj.name,
-            'link_list': ['products/css/product.css'],
-            'product': obj,
-            'menu': ProductCategory.objects.all(),
-        }
-    )
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'products/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.get_object().name
+        context['link_list'] = ['products/css/product.css']
+        context['menu'] = ProductCategory.objects.all()
+        context['product'] = self.get_object()
+
+        return context
 
 
-class ProductCreate(View):
+class ProductCreate(CreateView):
+    model = Product
+    success_url = reverse_lazy('products:main')
     form_class = ProductModelForm
-    template_name = 'categories/create.html'
-    success_url = 'products:main'
+    template_name = 'products/create.html'
 
-    def get(self, *args, **kwargs):
-        return render(
-            self.request,
-            self.template_name,
-            {
-                'title': 'Создание продукта',
-                'link_list': ['server/css/crud.css'],
-                'menu': ProductCategory.objects.all(),
-                'form': self.form_class(),
-            }
-        )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Создание продукта'
+        context['link_list'] = ['server/css/crud.css']
+        context['menu'] = ProductCategory.objects.all()
 
-    def post(self, *args, **kwargs):
-        form = self.form_class(
-            data=self.request.POST,
-            files=self.request.FILES,
-        )
-        if form.is_valid():
-            form.save()
-            return redirect(self.success_url)
-
-        return render(
-            self.request,
-            self.template_name,
-            {
-                'title': 'Создание продукта',
-                'link_list': ['server/css/crud.css'],
-                'menu': ProductCategory.objects.all(),
-                'form': form,
-            }
-        )
+        return context
 
 
-def product_update(request, pk):
-    obj = get_object_or_404(Product, pk=pk)
-    form = ProductModelForm(
-        instance=obj
-    )
+class ProductUpdate(UpdateView):
+    model = Product
+    success_url = reverse_lazy('products:main')
+    form_class = ProductModelForm
+    template_name = 'products/update.html'
 
-    if request.method == 'POST':
-        form = ProductModelForm(
-            data=request.POST,
-            files=request.FILES,
-            instance=obj,
-        )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Изменение продукта'
+        context['link_list'] = ['server/css/crud.css']
+        context['menu'] = ProductCategory.objects.all()
 
-        if form.is_valid():
-            form.save()
-            return redirect('products:main')
-
-    return render(
-        request,
-        'products/update.html',
-        {
-            'title': 'Изменение продукта',
-            'link_list': ['server/css/crud.css'],
-            'menu': ProductCategory.objects.all(),
-            'form': form,
-            'obj': obj,
-        }
-    )
+        return context
 
 
-def product_delete(request, pk):
-    obj = get_object_or_404(Product, pk=pk)
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = reverse_lazy('products:main')
+    template_name = 'products/delete.html'
 
-    if request.method == 'POST':
-        obj.delete()
-        return redirect('products:main')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Удаление продукта'
+        context['link_list'] = ['server/css/crud.css']
+        context['menu'] = ProductCategory.objects.all()
+        context['product'] = self.get_object()
 
-    return render(
-        request,
-        'products/delete.html',
-        {
-            'title': 'Удаление продукта',
-            'link_list': ['server/css/crud.css'],
-            'menu': ProductCategory.objects.all(),
-            'obj': obj,
-        }
-    )
+        return context
 
 
 def product_rest_list(request):
