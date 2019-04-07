@@ -3,11 +3,11 @@
 
 {% block content_right %}
     <div class="content_right_header">
-        Удаление продукта "{{ product.name }}"
+        Удаление продукта "{{ obj.name }}"
     </div>
     <form method="POST">
         {% csrf_token %}
-        <span>Продукт "{{ product.name }}" будет удален без возможности его восстановления. Удалить продукт?</span>
+        <span>Продукт "{{ obj.name }}" будет удален без возможности его восстановления. Удалить продукт?</span>
         <br>
         <input type="submit">
     </form>

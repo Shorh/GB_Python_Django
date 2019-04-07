@@ -9,8 +9,8 @@ def main(request):
         {
             'title': 'Сундук с сокровищами',
             'link_list': ['main/css/index.css'],
-            'products': Product.objects.all(),
             'menu': ProductCategory.objects.all(),
+            'obj': Product.objects.all(),
         }
     )
 

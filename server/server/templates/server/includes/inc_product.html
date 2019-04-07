@@ -4,8 +4,8 @@
    class="product_unit
           {% if status == 'new' %}product_unit_new{% endif %}
           {% if status == 'hot' %}product_unit_hot{% endif %}">
-    {% if image_url %}
-        <img src="{{ image_url }}" alt={{ name }}>
+    {% if image %}
+        <img src="{{ image.url }}" alt={{ name }}>
     {% else %}
         <img src="/media/products_images/default.png" alt={{ name }}>
     {% endif %}
