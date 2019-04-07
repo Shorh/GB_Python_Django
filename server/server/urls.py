@@ -19,11 +19,12 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
-from products.viewsets import ProductViewSet
+from products.viewsets import ProductViewSet, CategoryViewSet
 
 
 router = DefaultRouter()
 router.register('products', ProductViewSet)
+router.register('categories', CategoryViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
