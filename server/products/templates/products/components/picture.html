@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="{% static 'products/css/picture.css' %}">
 
 <div class="product_unit">
-    {% if obj.image %}
-        <img src="{{ obj.image.url }}" alt="">
+    {% if object.image %}
+        <img src="{{ object.image.url }}" alt="">
     {% else %}
         <img src="/media/products_images/default.png" alt="">
     {% endif %}
