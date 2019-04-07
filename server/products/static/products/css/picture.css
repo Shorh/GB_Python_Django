@@ -1,0 +1,17 @@
+.product_unit {
+    display: block;
+    position: relative;
+    background-color: #f8f8f8;
+    float: left;
+    width: 101px;
+    height: 120px;
+}
+
+.product_unit img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
