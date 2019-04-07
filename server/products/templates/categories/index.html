@@ -6,8 +6,10 @@
         Категории
     </div>
     <div class="content_right_product">
-        {% for category in obj %}
+        {% for category in object_list %}
             {% include 'server/includes/inc_category.html' with id=category.id image=category.image name=category.name %}
         {% endfor %}
     </div>
+
+    {% include 'server/includes/inc_pagination.html' with page=page_obj paginator=paginator %}
 {% endblock %}

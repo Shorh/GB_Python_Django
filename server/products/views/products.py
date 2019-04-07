@@ -11,13 +11,13 @@ from products.forms import ProductModelForm
 class ProductList(ListView):
     model = Product
     template_name = 'products/index.html'
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Каталог'
         context['link_list'] = ['']
         context['menu'] = ProductCategory.objects.all()
-        context['obj'] = Product.objects.all()[:3]
 
         return context
 
@@ -31,7 +31,6 @@ class ProductDetail(DetailView):
         context['title'] = self.get_object().name
         context['link_list'] = ['products/css/product.css']
         context['menu'] = ProductCategory.objects.all()
-        context['obj'] = self.get_object()
 
         return context
 
@@ -76,7 +75,6 @@ class ProductDelete(DeleteView):
         context['title'] = 'Удаление продукта'
         context['link_list'] = ['server/css/crud.css']
         context['menu'] = ProductCategory.objects.all()
-        context['obj'] = self.get_object()
 
         return context
 

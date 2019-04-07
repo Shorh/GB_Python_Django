@@ -6,10 +6,13 @@
         Каталог
     </div>
     <div class="content_right_product">
-        {% for product in obj %}
+        {% for product in object_list %}
             {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
         {% endfor %}
     </div>
+
+    {% include 'server/includes/inc_pagination.html' with page=page_obj paginator=paginator %}
+
     <button id="load-button">Показать все</button>
 {% endblock %}
 
