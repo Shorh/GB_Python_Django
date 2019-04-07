@@ -1,6 +1,3 @@
-from django.shortcuts import (
-    render, redirect, get_object_or_404
-)
 from django.http import JsonResponse
 from django.views.generic import (
     CreateView, UpdateView, DeleteView, ListView, DetailView
@@ -20,7 +17,7 @@ class ProductList(ListView):
         context['title'] = 'Каталог'
         context['link_list'] = ['']
         context['menu'] = ProductCategory.objects.all()
-        context['products'] = Product.objects.all()[:3]
+        context['obj'] = Product.objects.all()[:3]
 
         return context
 
@@ -34,7 +31,7 @@ class ProductDetail(DetailView):
         context['title'] = self.get_object().name
         context['link_list'] = ['products/css/product.css']
         context['menu'] = ProductCategory.objects.all()
-        context['product'] = self.get_object()
+        context['obj'] = self.get_object()
 
         return context
 
@@ -79,7 +76,7 @@ class ProductDelete(DeleteView):
         context['title'] = 'Удаление продукта'
         context['link_list'] = ['server/css/crud.css']
         context['menu'] = ProductCategory.objects.all()
-        context['product'] = self.get_object()
+        context['obj'] = self.get_object()
 
         return context
 
