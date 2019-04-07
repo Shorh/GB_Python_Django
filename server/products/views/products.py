@@ -3,6 +3,7 @@ from django.views.generic import (
     CreateView, UpdateView, DeleteView, ListView, DetailView
 )
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from products.models import Product, ProductCategory
 from products.forms import ProductModelForm
@@ -35,9 +36,11 @@ class ProductDetail(DetailView):
         return context
 
 
-class ProductCreate(CreateView):
+class ProductCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Product
     success_url = reverse_lazy('products:main')
+    login_url = reverse_lazy('accounts:login')
+
     form_class = ProductModelForm
     template_name = 'products/create.html'
 
@@ -49,10 +52,15 @@ class ProductCreate(CreateView):
 
         return context
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-class ProductUpdate(UpdateView):
+
+class ProductUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
     success_url = reverse_lazy('products:main')
+    login_url = reverse_lazy('accounts:login')
+
     form_class = ProductModelForm
     template_name = 'products/update.html'
 
@@ -64,10 +72,15 @@ class ProductUpdate(UpdateView):
 
         return context
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-class ProductDelete(DeleteView):
+
+class ProductDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('products:main')
+    login_url = reverse_lazy('accounts:login')
+
     template_name = 'products/delete.html'
 
     def get_context_data(self, **kwargs):
@@ -78,8 +91,11 @@ class ProductDelete(DeleteView):
 
         return context
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-def product_rest_list(request):
+
+def product_rest_list():
     object_list = Product.objects.all()
     data = []
 
