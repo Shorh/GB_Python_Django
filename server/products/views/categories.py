@@ -3,6 +3,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from products.models import ProductCategory
 from products.forms import CategoryModelForm
@@ -41,9 +42,11 @@ class CategoryDetail(DetailView):
         return context
 
 
-class CategoryCreate(CreateView):
+class CategoryCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = ProductCategory
     success_url = reverse_lazy('categories:main')
+    login_url = reverse_lazy('accounts:login')
+
     form_class = CategoryModelForm
     template_name = 'categories/create.html'
 
@@ -55,10 +58,15 @@ class CategoryCreate(CreateView):
 
         return context
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-class CategoryUpdate(UpdateView):
+
+class CategoryUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = ProductCategory
     success_url = reverse_lazy('categories:main')
+    login_url = reverse_lazy('accounts:login')
+
     form_class = CategoryModelForm
     template_name = 'categories/update.html'
 
@@ -70,10 +78,15 @@ class CategoryUpdate(UpdateView):
 
         return context
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-class CategoryDelete(DeleteView):
+
+class CategoryDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = ProductCategory
     success_url = reverse_lazy('categories:main')
+    login_url = reverse_lazy('accounts:login')
+
     template_name = 'categories/delete.html'
 
     def get_context_data(self, **kwargs):
@@ -83,3 +96,6 @@ class CategoryDelete(DeleteView):
         context['menu'] = ProductCategory.objects.all()
 
         return context
+
+    def test_func(self):
+        return self.request.user.is_superuser

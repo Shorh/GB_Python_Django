@@ -1,17 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import (
-    AuthenticationForm, UserCreationForm, UserChangeForm
+    UserCreationForm, UserChangeForm
 )
 from accounts.models import AccountUser
 
 
-class LoginForm(AuthenticationForm):
-    class Meta:
-        model = AccountUser
-        fields = ('username', 'password')
-
-
-class CreationForm(UserCreationForm):
+class RegistrationForm(UserCreationForm):
     class Meta:
         model = AccountUser
         fields = (

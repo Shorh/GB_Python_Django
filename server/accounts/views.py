@@ -1,72 +1,49 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import (
-    authenticate, login, logout
-)
-
+from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 
 from products.models import ProductCategory
 from accounts.models import AccountUser
-from accounts.forms import LoginForm, CreationForm, UpdateForm
+from accounts.forms import RegistrationForm
 
 
-def login_view(request):
-    form = LoginForm()
+class AccountLogin(LoginView):
+    template_name = 'accounts/login.html'
 
-    if request.method == 'POST':
-        form = LoginForm(data=request.POST)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Вход'
+        context['link_list'] = ['server/css/crud.css']
+        context['menu'] = ProductCategory.objects.all()
 
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-
-            user = authenticate(
-                username=username,
-                password=password,
-            )
-
-            if user and user.is_active:
-                login(request, user)
-
-                return redirect('main:main')
-
-    return render(
-        request,
-        'accounts/login.html',
-        {
-            'title': '`Вход',
-            'link_list': ['server/css/crud.css'],
-            'menu': ProductCategory.objects.all(),
-            'form': form,
-        }
-    )
+        return context
 
 
-def logout_view(request):
-    logout(request)
-    return redirect('main:main')
+class AccountLogout(LogoutView):
+    next_page = reverse_lazy('main:main')
 
 
-def register_view(request):
-    form = CreationForm()
-    if request.method == 'POST':
-        form = CreationForm(
-            data=request.POST,
-            files=request.FILES,
-        )
-        if form.is_valid():
-            form.save()
-            return redirect('main:main')
+class AccountRegister(CreateView):
+    model = AccountUser
+    form_class = RegistrationForm
+    template_name = 'accounts/registration.html'
+    success_url = reverse_lazy('main:main')
 
-    return render(
-        request,
-        'accounts/registration.html',
-        {
-            'title': 'Регистрация',
-            'link_list': ['server/css/crud.css'],
-            'menu': ProductCategory.objects.all(),
-            'form': form,
-        }
-    )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Регистрация'
+        context['link_list'] = ['server/css/crud.css']
+        context['menu'] = ProductCategory.objects.all()
+
+        return context
+
+    def post(self, *args, **kwargs):
+        response = super().post(*args, **kwargs)
+        login(self.request, self.object)
+
+        return response
 
 
 def user_delete(request):
@@ -82,6 +59,6 @@ def user_delete(request):
             'title': 'Удаление пользователя',
             'link_list': ['server/css/crud.css'],
             'menu': ProductCategory.objects.all(),
-            'name': request.user.username,
+            'object': request.user,
         }
     )
