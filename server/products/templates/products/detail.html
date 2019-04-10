@@ -3,20 +3,22 @@
 
 {% block content_right %}
     <div class="content_right_header">
-        {{ product.name }}
+        {{ object.name }}
     </div>
     <div class="product_img_and_short_description">
-        <a href="{{ product.image.url }}" target="_blank">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" alt={{ product.name }} class="game_image">
-            {% else %}
-                <img src="{% static 'products/img/default.png' %}" alt={{ product.name }} class="game_image">
-            {% endif %}
-        </a>
+        {% if object.image %}
+            <a href="{{ object.image.url }}" target="_blank">
+                <img src="{{ object.image.url }}" alt={{ object.name }} class="game_image">
+            </a>
+        {% else %}
+            <a href="/media/products_images/default.png" target="_blank">
+                <img src="/media/products_images/default.png" alt={{ object.name }} class="game_image">
+            </a>
+        {% endif %}
         <div class="product_short_description_wrap">
             <h2 class="product_header">Описание товара</h2>
             <p class="product_short_description">
-                {{ product.short_description|safe }}
+                {{ object.short_description|safe }}
             </p>
             <a href="#" class="buy">Купить</a>
         </div>
@@ -24,11 +26,11 @@
 
     <h2 class="product_header">Характеристики товара</h2>
     <ul class="product_features">
-        {{ product.specifications|safe }}
+        {{ object.specifications|safe }}
     </ul>
 
     <h2 class="product_header">Подробное описание товара</h2>
     <div class="product_full_description">
-        {{ product.description|safe }}
+        {{ object.description|safe }}
     </div>
 {% endblock %}

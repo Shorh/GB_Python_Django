@@ -6,10 +6,13 @@
         Каталог
     </div>
     <div class="content_right_product">
-        {% for product in products %}
-            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image_url=product.image.url name=product.name price_now=product.price_now price_old=product.price_old %}
+        {% for product in object_list %}
+            {% include 'server/includes/inc_product.html' with id=product.id status=product.status image=product.image name=product.name price_now=product.price_now price_old=product.price_old %}
         {% endfor %}
     </div>
+
+    {% include 'server/includes/inc_pagination.html' with page=page_obj paginator=paginator %}
+
     <button id="load-button">Показать все</button>
 {% endblock %}
 
@@ -42,7 +45,8 @@
                 class="product_unit
                     ${ status === 'new' ? 'product_unit_new' : ''}
                     ${ status === 'hot' ? 'product_unit_hot' : ''}">
-                <img src="${ image_url }" alt="${ name }">
+                <img src="${ image_url ? image_url : '/media/products_images/default.png' }"
+                    alt="${ name }">
                 <div class="product_unit_name">
                     ${ name }
                 </div>

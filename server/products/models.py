@@ -1,9 +1,6 @@
 from django.db import models
 
 
-DEFAULT_IMG = '../static/product/img/default.png'
-
-
 class ProductCategory(models.Model):
     class Meta:
         verbose_name = 'Категория продуктов'
@@ -18,6 +15,14 @@ class ProductCategory(models.Model):
         verbose_name='Описание категории',
         max_length=500,
         blank=True
+    )
+    created = models.DateTimeField(
+        verbose_name='Дата создания',
+        auto_now_add=True,
+    )
+    modified = models.DateTimeField(
+        verbose_name='Дата изменения',
+        auto_now=True,
     )
 
     def __str__(self):
@@ -36,30 +41,30 @@ class Product(models.Model):
         related_name='category'
     )
     name = models.CharField(
-        verbose_name='Наименование продукта',
+        verbose_name='Наименование',
         max_length=128
     )
     short_description = models.CharField(
-        verbose_name='Краткое описание продукта',
+        verbose_name='Краткое описание',
         max_length=1000,
         blank=True
     )
     description = models.TextField(
-        verbose_name='Описание продукта',
+        verbose_name='Описание',
         blank=True
     )
     specifications = models.TextField(
-        verbose_name='Характеристики продукта',
+        verbose_name='Характеристики',
         blank=True
     )
     price_now = models.DecimalField(
-        verbose_name='Текущая цена продукта',
+        verbose_name='Текущая цена',
         max_digits=8,
         decimal_places=2,
         default=0
     )
     price_old = models.DecimalField(
-        verbose_name='Предыдущая цена продукта',
+        verbose_name='Предыдущая цена',
         max_digits=8,
         decimal_places=2,
         default=0
@@ -70,13 +75,20 @@ class Product(models.Model):
     )
     image = models.ImageField(
         upload_to='products_images',
-        default=DEFAULT_IMG,
         blank=True
     )
     status = models.CharField(
         verbose_name='Статус продукта',
         max_length=50,
         blank=True
+    )
+    created = models.DateTimeField(
+        verbose_name='Дата создания',
+        auto_now_add=True,
+    )
+    modified = models.DateTimeField(
+        verbose_name='Дата изменения',
+        auto_now=True,
     )
 
     def __str__(self):
